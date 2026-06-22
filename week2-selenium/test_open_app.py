@@ -1,15 +1,13 @@
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
+from utils.driver_setup import create_driver
 
-options = Options()
 
-driver = webdriver.Chrome(options=options)
+def test_open_movie_app():
+    driver = create_driver()
 
-driver.get("https://movie-app-next-xi.vercel.app/home")
+    driver.get("https://movie-app-next-xi.vercel.app/home")
 
-print(driver.title)
+    assert "Create Next App" in driver.title
 
-input("Tekan Enter untuk menutup browser...")
+    print("Movie App berhasil dibuka")
 
-driver.quit()
+    driver.quit()

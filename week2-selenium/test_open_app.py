@@ -6,7 +6,7 @@ options = Options()
 
 driver = webdriver.Chrome(options=options)
 
-driver.get("https://restaurant-web-mpv.vercel.app/")
+driver.get("https://movie-app-next-xi.vercel.app/home")
 
 print(driver.title)
 

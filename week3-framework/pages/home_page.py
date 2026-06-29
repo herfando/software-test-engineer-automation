@@ -19,7 +19,7 @@ class HomePage:
             )
         )
 
-        self.wait.until(lambda d: search_box.is_displayed() and search_box.is_enabled())
+        print(search_box.get_attribute("outerHTML"))
 
         search_box.click()
         search_box.clear()

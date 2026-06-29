@@ -16,9 +16,10 @@ class TestSearchMovie(BaseTest):
         wait = WebDriverWait(self.driver, 10)
 
         movies = wait.until(
-            EC.presence_of_all_elements_located((By.CSS_SELECTOR, "img"))
+            EC.presence_of_all_elements_located(
+                (By.CSS_SELECTOR, "img")
+            )
         )
 
         assert len(movies) > 0
-
         print(f"Search berhasil, ditemukan {len(movies)} movie")

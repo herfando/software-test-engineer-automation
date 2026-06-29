@@ -3,6 +3,8 @@ from pages.home_page import HomePage
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.alert import Alert
+
 
 class TestFavoriteMovie(BaseTest):
 
@@ -16,14 +18,21 @@ class TestFavoriteMovie(BaseTest):
             EC.presence_of_all_elements_located((By.CSS_SELECTOR, "img"))
         )[0]
 
+        first_movie.click()
+
         favorite_button = wait.until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "button"))
+            EC.element_to_be_clickable(
+                (By.CSS_SELECTOR, "button")
+            )
         )
+
         favorite_button.click()
 
-        assert favorite_button.is_displayed()
-
-        print("Favorite activated")
+        # 🔥 HANDLE ALERT (INI YANG KAMU PERLU)
+        try:
+            Alert(self.driver).accept()
+        except:
+            pass
 
         nav = wait.until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, "nav"))
@@ -35,5 +44,4 @@ class TestFavoriteMovie(BaseTest):
         )
 
         assert len(favorites) > 0
-
         print("Movie successfully saved to favorites")

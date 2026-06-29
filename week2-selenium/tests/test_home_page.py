@@ -1,13 +1,10 @@
-from utils.driver_setup import create_driver
+from base_test import BaseTest
 
+class TestHomePage(BaseTest):
 
-def test_home_page_load():
-    driver = create_driver()
+    def test_home_page_load(self):
+        self.driver.get("https://movie-app-next-xi.vercel.app/home")
 
-    driver.get("https://movie-app-next-xi.vercel.app/home")
+        assert "Create Next App" in self.driver.title
 
-    assert "Create Next App" in driver.title
-
-    print("Home page loaded successfully")
-
-    driver.quit()
+        print("Home page loaded successfully")

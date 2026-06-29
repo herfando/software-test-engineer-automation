@@ -1,23 +1,16 @@
-from utils.driver_setup import create_driver
+from base_test import BaseTest
 from pages.home_page import HomePage
 from pages.detail_page import DetailPage
 
+class TestDetailMovie(BaseTest):
 
-def test_open_movie_detail():
-    driver = create_driver()
+    def test_open_movie_detail(self):
+        home = HomePage(self.driver)
+        detail = DetailPage(self.driver)
 
-    home = HomePage(driver)
-    detail = DetailPage(driver)
+        home.open()
+        detail.click_first_movie()
 
-    # buka home
-    home.open()
+        assert detail.is_detail_page_loaded()
 
-    # klik movie
-    detail.click_first_movie()
-
-    # validasi masuk detail
-    assert detail.is_detail_page_loaded()
-
-    print("Detail page berhasil dibuka")
-
-    driver.quit()
+        print("Detail page berhasil dibuka")

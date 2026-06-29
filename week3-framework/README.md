@@ -76,3 +76,28 @@ Implement parallel test execution
 
 Automation Testing Project - Week 3
 Built using Python, Selenium WebDriver, and Pytest
+
+🔄 Continuous Integration (CI)
+
+This project uses GitHub Actions for Continuous Integration (CI). Every push or pull request to the main branch will automatically trigger the test suite execution.
+
+CI Workflow Steps:
+Checkout repository
+Setup Python environment
+Install dependencies
+Run Selenium test suite in headless mode
+Generate HTML test report
+CI Configuration File:
+.github/workflows/ci.yml
+How to Trigger CI:
+
+Simply push changes to GitHub:
+
+git add .
+git commit -m "run ci pipeline"
+git push origin main
+Test Execution:
+
+Tests run automatically using:
+
+python -m pytest tests --html=reports/report.html

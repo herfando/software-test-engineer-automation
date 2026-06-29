@@ -14,7 +14,11 @@ class HomePage:
 
     def search_movie(self, keyword):
         search_box = self.wait.until(
-            EC.element_to_be_clickable((By.CSS_SELECTOR, "input[placeholder='Search Movie']"))
+            EC.visibility_of_element_located(
+                (By.CSS_SELECTOR, "input[placeholder='Search Movie']")
+            )
         )
-        search_box.click()
-        search_box.send_keys(keyword)
+
+    search_box.click()
+    search_box.clear()
+    search_box.send_keys(keyword)
